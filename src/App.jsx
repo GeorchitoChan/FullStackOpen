@@ -7,13 +7,21 @@ const Header = (course) => {
   )
 }
 
+const Part = (part) => {
+  return (
+      <div>
+        <p>{part.part} {part.exercise}</p>
+      </div>
+  )
+}
+
 const Content = (exercises) => {
   console.log(exercises)
   return (
     <div>
-      <p>{exercises.exercises[0].part} {exercises.exercises[0].exercise}</p>
-      <p>{exercises.exercises[1].part} {exercises.exercises[1].exercise}</p>
-      <p>{exercises.exercises[2].part} {exercises.exercises[2].exercise}</p>
+      <Part part={exercises.exercises[0].part} exercise={exercises.exercises[0].exercise} />
+      <Part part={exercises.exercises[1].part} exercise={exercises.exercises[1].exercise} />
+      <Part part={exercises.exercises[2].part} exercise={exercises.exercises[2].exercise} />
     </div>
   )
 }
