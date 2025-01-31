@@ -1,18 +1,21 @@
 # Introducción a React + Vite
 
+Permite familiarizarnos con probablemente el tema más importante de este curso, es decir, la librería React.
+
 **Crear un proyecto de react**
 
 `
-    npm create vite@latest part1 -- --template react
+npm create vite@latest part1 -- --template react
 `
+
+**Intalar las librerias que ocupa el proyecto**
 ~~~
-    Bloque de código
+    npm install
 ~~~
-
-
-
-
-
+**Ejecutar el proyecto**
+~~~
+    npm run dev
+~~~
 ---
 __Repositorio__
 
