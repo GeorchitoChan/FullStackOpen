@@ -1,8 +1,7 @@
-const Header = (course) => {
-  console.log(course)
+const Header = (title) => {
   return (
     <div>
-      <h1>{course.descripcion}</h1>
+      <h1>{title.title}</h1>
     </div>
   )
 }
@@ -10,26 +9,28 @@ const Header = (course) => {
 const Part = (part) => {
   return (
       <div>
-        <p>{part.part} {part.exercise}</p>
+        <p>{part.part.name} {part.part.exercises}</p>
       </div>
   )
 }
 
-const Content = (exercises) => {
-  console.log(exercises)
+const Content = (parts) => {
   return (
     <div>
-      <Part part={exercises.exercises[0].part} exercise={exercises.exercises[0].exercise} />
-      <Part part={exercises.exercises[1].part} exercise={exercises.exercises[1].exercise} />
-      <Part part={exercises.exercises[2].part} exercise={exercises.exercises[2].exercise} />
+      <Part part={parts.parts[0]} />
+      <Part part={parts.parts[1]} />
+      <Part part={parts.parts[2]} />
     </div>
   )
 }
 
-const Total = (exercises) => {
+const Total = (parts) => {
+  console.log(parts)
+  const total = parts.parts.reduce((sum, part) => sum + part.exercises, 0)
+
   return (
     <div>
-      <p>Number of exercises exercises {exercises.totales[0] + exercises.totales[1] + exercises.totales[2]}</p>
+      <p>Number of exercises exercises {total} </p>
     </div>
   )
 }
@@ -44,21 +45,31 @@ const Footer = () => {
 }
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const exercises = [
-    {part: 'Fundamentals of React', exercise: 10},
-    {part: 'Using props to pass data', exercise: 7},
-    {part: 'State of a component', exercise: 14}
-  ]
 
-  const totales = exercises.map(item => item.exercise);
+
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
   return (
     <div>
-      <Header descripcion={course} />
-      <Content exercises={exercises} />
-      <Total totales={totales} />
-
+      <Header title={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
       <Footer />
     </div>
   )
